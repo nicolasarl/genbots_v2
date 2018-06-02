@@ -1,31 +1,31 @@
 #ifndef _PINES_H
 #define _PINES_H
-/*Pins declaration*/
-
-//TCS3200 Color Sensor 
-#define s0 11
-#define s1 12
-#define s2 10
-#define s3 9
-#define OUT 14
+/*Pins declaration def*/
+//NOTA: el pin 15 esta liberado
+//TCS3200 Color Sensor
+const int s0 = 11;//naranja suave
+const int s1 = 12;//verde
+const int s2 = 10;//amarillo
+const int s3 = 9;//negro
+const int out = 14;//azul
 //DC Motors
 
 //IZQ: VERDE
-#define SM1 7
-#define SM1_2 8
-#define PWM1 6
-//DER: VIOLETA
-#define SM2 3
-#define SM2_2 4
-#define PWM2 5
+const int sm1 = 7;
+const int sm1_2 = 8;
+const int pwm1 = 6;//columna h protoboard
+//DER: VIOLETA o AZUL
+const int sm2 = 3;
+const int sm2_2 = 4;
+const int pwm2 = 5;//columna c protoboard
+
 //LED's OUTPUT
-#define LEDR 13
-#define LEDG 15
-#define LEDB 16
+const int ledr = 13;//morado sube segundo piso
+const int ledb = 16;//azul sube segundo piso
 //Phototransistors
-#define sel1 2 //se reasigna por falta de pines
-#define sel2 17
-#define LECT_R 18
-#define LECT_B 19
+const int sel1 = 2; //se reasigna por falta de pines: blanco sube segundo piso
+const int sel2 = 17;//gris sube segundo piso
+const int lect_r = 18;//marron sube segundo piso
+const int lect_b = 19;//amarillo sube segundo piso
 
 #endif

@@ -8,9 +8,9 @@
 
 typedef struct{
 //numeros entre -128 y 127 Control de versiones def
-  float gen1[10]= {-124, 9, 55, 22, 16, 62, -93, -35, -18, -93};//valores genes para motor izq
-  float gen2[10] = {-37, -14, 9, -21, -95, 104, -97, 80, 76, -26};//valores genes para motor der
-  float gen3[10] = {31, -22, -98, 18, 44, 96, 91, 52, -97, 2};//valores genes para LED's
+  float gen1[10] = {150, 150, 150, 150, 150, -150, -150,-150, -150, -150};//valores genes para motor izq
+  float gen2[10] = {150, 150, 150, 150, 150, -150, -150,-150, -150, -150};//valores genes para motor der
+  float gen3[10] = {31, 99, 98, 124, 44, 96, 124, 52, 97, 2};//valores genes para LED's
 }genes;
 genes gen;
 float temp1 = 0;//variable temporal utilizada para almacenar calculos intermedios
@@ -26,22 +26,22 @@ void lectura(float input_neuron []){
 void calculo(float input_neuron [], float output_neuron[]){//Realiza el cálculo de las neuronas de salida
 
   for (int i = 0; i < 9; i++){//motor izq
-Serial.println("input neuron:");
-Serial.println(input_neuron[i]);
+//Serial.println("input neuron:");
+//Serial.println(input_neuron[i]);
     temp1 += input_neuron[i]*gen.gen1[i];
     
   }
   
   //******************************************************************//
-   Serial.println("Valor de x para tanh motor izq.: p process");
-   Serial.println(temp1);
+//   Serial.println("Valor de x para tanh motor izq.: p process");
+//   Serial.println(temp1);
    //******************************************************************//
 
  output_neuron[0] = tanh(temp1/128);//Control de versiones 
  
    //******************************************************************//
-   Serial.println("Valor de la neurona 0 motor izq.: p process");
-   Serial.println(output_neuron[0]);
+//   Serial.println("Valor de la neurona 0 motor izq.: p process");
+//   Serial.println(output_neuron[0]);
    //******************************************************************//
 
    temp1=0;//Control de versiones 
@@ -91,7 +91,7 @@ void salida(float output_neuron[]){
         temp2 = 0;
       }
       else{
-        temp2 = int(output_neuron[0]*255*(-1)/2);
+        temp2 = int(output_neuron[0]*255*(-1)/2) + 100;
       }
       analogWrite(pwm1, temp2);
 
@@ -108,7 +108,7 @@ void salida(float output_neuron[]){
         temp2 = 0;
       }
       else{//Se define un rango entre 0 y 0.3 donde se pone velocidad nula para proteger los motores
-        temp2 = int(output_neuron[0]*255/2);
+        temp2 = int(output_neuron[0]*255/2) + 100;
       }
       analogWrite(pwm1, temp2);
       
@@ -127,7 +127,7 @@ void salida(float output_neuron[]){
         temp2 = 0;
       }
       else{
-        temp2 = int(output_neuron[1]*255*(-1)/2);
+        temp2 = int(output_neuron[1]*255*(-1)/2) + 100;
       }
       analogWrite(pwm2, temp2);
       
@@ -144,7 +144,7 @@ void salida(float output_neuron[]){
         temp2 = 0;
       }
       else{
-        temp2 = int(output_neuron[1]*255/2);
+        temp2 = int(output_neuron[1]*255/2) + 100;
       }
       analogWrite(pwm2, temp2);
       

@@ -35,7 +35,7 @@ void tcs(float input_neuron[]){
 
 //Encendemos el sensor
 
-digitalWrite(s0, HIGH);
+digitalWrite(s0, LOW);//2% frequency scaling: 10-12kHz Limited because of Arduino's clock
 digitalWrite(s1, HIGH);
 delayMicroseconds(50);
   //Lee el valor en frecuencia de el color que lee, además de cambiarlo a rango RGB
@@ -57,7 +57,7 @@ delayMicroseconds(50);
 
 //compara el valor con el del veneno: ROJO
 
-if ((rgb.R < rgb.B)&&(rgb.G > rgb.B)&& (rgb.R < 35)){
+if ((rgb.R < rgb.B)&&(rgb.G > rgb.B)&& (rgb.R < 400)){
 
     input_neuron[0] = 0;//ponemos la neurona de comida a 0
     input_neuron[1] = 1;//ponemos la neurona de veneno a 1
@@ -94,10 +94,10 @@ void phototransistors(float input_neuron[]){
   delay(1);
 
   temp.B = analogRead(lect_b);
-  input_neuron[3] = (1.0/212.0)*temp.B-1.20755;
+  input_neuron[3] = (1.0/649.0)*temp.B;
   input_neuron[3] = constrain(input_neuron[3],0,1);
   temp.R = analogRead(lect_r);
-  input_neuron[2] = 0.001038*temp.R-0.0322;
+  input_neuron[2] = (1.0/649.0)*temp.R;
   input_neuron[2] = constrain(input_neuron[2],0,1);
   
   //Realizamos la lectura para el cuadrante 2
@@ -106,10 +106,10 @@ void phototransistors(float input_neuron[]){
   delay(1);
 
   temp.B = analogRead(lect_b);
-  input_neuron[5] = (1.0/212.0)*temp.B-1.20755;
+  input_neuron[5] = (1.0/649.0)*temp.B;
   input_neuron[5] = constrain(input_neuron[5],0,1);
   temp.R = analogRead(lect_r);
-  input_neuron[4] = 0.001038*temp.R-0.0322;
+  input_neuron[4] = (1.0/649.0)*temp.R;
   input_neuron[4] = constrain(input_neuron[4],0,1);
 
   //Realizamos la lectura para el cuadrante 3
@@ -117,10 +117,10 @@ void phototransistors(float input_neuron[]){
   digitalWrite(sel2, LOW);
   delay(1);
   temp.B = analogRead(lect_b);
-  input_neuron[7] = (1.0/212.0)*temp.B-1.20755;
+  input_neuron[7] = (1.0/649.0)*temp.B;
   input_neuron[7] = constrain(input_neuron[7],0,1);
   temp.R = analogRead(lect_r);
-  input_neuron[6] = 0.001038*temp.R-0.0322;
+  input_neuron[6] = (1.0/649.0)*temp.R;
   input_neuron[6] = constrain(input_neuron[6],0,1);
 
   //Realizamos la lectura para el cuadrante 4
@@ -130,10 +130,10 @@ void phototransistors(float input_neuron[]){
   temp.B = analogRead(lect_b);
   Serial.println("Tempb 4: ");
   Serial.println(temp.B);  
-  input_neuron[9] = (1.0/212.0)*temp.B-1.20755;
+  input_neuron[9] = (1.0/649.0)*temp.B;
   input_neuron[9] = constrain(input_neuron[9],0,1);
   temp.R = analogRead(lect_r);
-  input_neuron[8] = 0.001038*temp.R-0.0322;
+  input_neuron[8] = (1.0/649.0)*temp.R;
   input_neuron[8] = constrain(input_neuron[8],0,1);
 //******************************************************************//
   Serial.println("Valor neurona 2, roja:");
@@ -149,7 +149,7 @@ void phototransistors(float input_neuron[]){
   Serial.println(input_neuron[3]);
   Serial.println("Valor neurona 5, azul:");
   Serial.println(input_neuron[5]);
-  Serial.println("Valor neurona 7, azul:");
+  Serial.println("Valor neurona 7, az0ul:");
   Serial.println(input_neuron[7]);
   Serial.println("Valor neurona 9, azul:");
   Serial.println(input_neuron[9]);

@@ -3,11 +3,11 @@
 /*Pins declaration def*/
 //NOTA: el pin 15 esta liberado
 //TCS3200 Color Sensor
-const int s0 = 11;//naranja suave
-const int s1 = 12;//verde
-const int s2 = 10;//amarillo
-const int s3 = 9;//negro
-const int out = 14;//azul
+const int s0 = 11;//Verde
+const int s1 = 12;//Amarillo
+const int s2 = 10;//Naranja
+const int s3 = 9;//Morado
+const int out = 14;//Azul
 //DC Motors
 
 //IZQ: VERDE
